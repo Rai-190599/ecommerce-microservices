@@ -31,7 +31,7 @@ Make sure you have [Docker](https://www.docker.com/) and [Docker Compose](https:
 ### Installation & Startup
 
 1. Clone the repository:
-  ```bash
+```bash
 git clone https://github.com/Rai-190599/ecommerce-microservices.git
 cd ecommerce-microservices
 
