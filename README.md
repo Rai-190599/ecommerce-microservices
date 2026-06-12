@@ -35,7 +35,7 @@ Make sure you have [Docker](https://www.docker.com/) and [Docker Compose](https:
    git clone https://github.com/Rai-190599/ecommerce-microservices.git
    cd ecommerce-microservices
 
-```
+
 
 2. Spin up the entire infrastructure using Docker Compose:
 
