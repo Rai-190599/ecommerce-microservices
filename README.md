@@ -46,10 +46,10 @@ docker-compose up --build
 
 
 *(Note: The first build might take a few minutes as it downloads the database and language images).*
+
 3. Open your browser and navigate to the Command Center:
 ```text
 http://localhost:3000
-
 ```
 
 
