@@ -38,6 +38,7 @@ Make sure you have [Docker](https://www.docker.com/) and [Docker Compose](https:
 ```
 
 2. Spin up the entire infrastructure using Docker Compose:
+
 ```bash
 docker-compose up --build
 
