@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  # --- Databases & Caches ---
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+  postgresdb:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: ecommerce
+    ports:
+      - "5432:5432"
+
+  valkey-cache:
+    image: valkey/valkey:latest
+    ports:
+      - "6379:6379"
+
+  # --- Microservices ---
+  product-service:
+    build: ./product-service
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongodb
+      - valkey-cache
+
+  order-service:
+    build: ./order-service
+    ports:
+      - "3002:3002"
+    depends_on:
+      - postgresdb
+    restart: always
+
+  payment-service:
+    build: ./payment-service
+    ports:
+      - "3003:3003"
+    depends_on:
+      - postgresdb
+
+  notification-service:
+    build: ./notification-service
+    ports:
+      - "3004:3004"
+
+  # --- Frontend ---
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - product-service
+      - order-service
